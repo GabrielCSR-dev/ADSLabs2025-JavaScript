@@ -10,7 +10,7 @@ POST /api/cliente: cadastra um registro novo de cliente na base de dados.
 	"nome",
 	"cpf"
 }
-- Ambos os campos não podem ser nulos e o CPF deve ser válido.
+- Ambos os campos não podem ser nulos e o CPF deve ser único e válido.
 
 PUT /api/cliente/:id: atualiza o registro cliente de chave primária ":id" existente na base de dados.
 {
@@ -18,7 +18,7 @@ PUT /api/cliente/:id: atualiza o registro cliente de chave primária ":id" exist
 	"cpf"
 }
 - O usuário não é obrigado a preencher ambos os campos do body, os que estiverem com nulo não
-alteram o valor original do registro. O CPF também deve ser válido para esse método.
+alteram o valor original do registro. O CPF também deve ser único e válido para esse método.
 
 DELETE /api/cliente/:id: deleta o registro cliente de chave primária ":id" existente na base de dados.
 - Deletar um registro de Cliente também causa a eliminação em cascata de todos os registro de Pedido

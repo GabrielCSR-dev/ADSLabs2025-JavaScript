@@ -1,0 +1,20 @@
+{
+  "name": "ads_labs",
+  "version": "1.0.0",
+  "description": "adslabs",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "dependencies": {
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.2",
+    "sequelize": "^6.37.7"
+  }
+}

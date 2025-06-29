@@ -1,0 +1,98 @@
+Rotas de cliente:
+
+GET /api/cliente?queryparams: lista todos os clientes baseado nos parâmetros de busca.
+- Queryparams se refere aos atributos do modelo Cliente que podem ser utilizados como filtro
+da requisição. Caso nada seja passado como parâmetro, o método retorna todos os registros do
+modelo na base de dados.
+
+POST /api/cliente: cadastra um registro novo de cliente na base de dados.
+{
+	"nome",
+	"cpf"
+}
+- Ambos os campos não podem ser nulos e o CPF deve ser válido.
+
+PUT /api/cliente/:id: atualiza o registro cliente de chave primária ":id" existente na base de dados.
+{
+	"nome",
+	"cpf"
+}
+- O usuário não é obrigado a preencher ambos os campos do body, os que estiverem com nulo não
+alteram o valor original do registro. O CPF também deve ser válido para esse método.
+
+DELETE /api/cliente/:id: deleta o registro cliente de chave primária ":id" existente na base de dados.
+- Deletar um registro de Cliente também causa a eliminação em cascata de todos os registro de Pedido
+que possuem seu ID como chave estrangeira.
+
+GET /api/cliente/maispediram: retorna os 5 clientes que mais fizeram pedidos em ordem decrescente
+- O método pode retornar menos que 5 clientes, pois ele considera apenas oa que realizaram ao
+menos 1 pedido.
+
+GET /api/cliente/maisgastaram: retorna os 5 clientes com o maior gasto total em pedidos em ordem
+decrescente.
+- O método pode retornar menos que 5 clientes, pois ele considera apenas oa que realizaram ao
+menos 1 pedido.
+
+Rotas de prato:
+
+GET /api/prato?queryparams: lista todos os pratos baseado nos parâmetros de busca.
+- Queryparams se refere aos atributos do modelo Prato que podem ser utilizados como filtro
+da requisição. Caso nada seja passado como parâmetro, o método retorna todos os registros do
+modelo na base de dados.
+
+POST /api/prato: cadastra um registro novo de prato na base de dados.
+{
+	"nome",
+	"preco"
+}
+- Ambos os campos não podem ser nulos e o nome deve ter entre 3 e 50 caracteres.
+
+PUT /api/prato/:id: atualiza o registro prato de chave primária ":id" existente na base de dados.
+{
+	"nome",
+	"preco"
+}
+- O usuário não é obrigado a preencher ambos os campos do body, os que estiverem com nulo não
+alteram o valor original do registro. O nome também deve ter entre 3 e 50 caracteres para ser válido.
+
+DELETE /api/prato/:id: deleta o registro prato de chave primária ":id" existente na base de dados.
+- Deletar um registro de Prato também causa a eliminação em cascata de todos os registro de Pedido
+que possuem seu ID como chave estrangeira.
+
+GET /api/prato/maispedidos: retorna todos os pratos em ordem decrescente de quantidade de pedidos.
+- O método também retorna os pratos que não tem nenhum pedido.
+
+Rotas de pedido:
+
+Rotas de prato:
+
+GET /api/pedido?queryparams: lista todos os pedidos baseado nos parâmetros de busca.
+- Queryparams se refere aos atributos do modelo Pedido que podem ser utilizados como filtro
+da requisição. Caso nada seja passado como parâmetro, o método retorna todos os registros do
+modelo na base de dados.
+
+POST /api/pedido: cadastra um registro novo de pedido na base de dados.
+{
+	"cliente_id",
+	"prato_id"
+}
+- Ambos os IDs informados não podem ser nulos e já devem existir nas tabelas de Cliente e Prato
+da base de dados.
+
+PUT /api/pedido/:id: atualiza o registro pedido de chave primária ":id" existente na base de dados.
+{
+	"cliente_id",
+	"prato_id"
+}
+- O usuário não é obrigado a preencher ambos os campos do body, os que estiverem com nulo não
+alteram o valor original do registro. Os IDs também já davem existir em suas tabelas originais para
+serem válidos.
+
+DELETE /api/pedido/:id: deleta o registro pedido de chave primária ":id" existente na base de dados.
+
+
+
+
+
+
+
